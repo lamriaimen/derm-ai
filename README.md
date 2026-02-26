@@ -1,4 +1,4 @@
-# Derm Nerdjes
+# Derm Nerdjes AI
 
 Skin lesion analysis app — upload a photo, get a condition match with confidence scores.
 Application d'analyse de lésions cutanées — téléversez une photo, obtenez une correspondance avec score de confiance.
@@ -52,7 +52,7 @@ Les poids du modèle sont téléchargés une seule fois au premier lancement et 
 ## Project Structure / Structure
 
 ```
-nerdjes/
+derm-ai/
 ├── app.py              # Flask server + model
 ├── requirements.txt
 ├── README.md
@@ -61,24 +61,6 @@ nerdjes/
     ├── style.css
     └── app.js
 ```
-
----
-
-## Deployment / Déploiement
-
-**Netlify** — not compatible. Netlify only serves static files and cannot run the Python backend.
-**Netlify** — non compatible. Netlify ne peut pas exécuter le backend Python.
-
-**Recommended / Recommandé:**
-
-- **HuggingFace Spaces** — free, supports Python backends, good RAM
-- **Render** — connect a GitHub repo, free tier available
-- **Railway** — auto-detects Python from GitHub
-
-For HuggingFace:
-1. Create a Space at huggingface.co/spaces
-2. Upload all project files
-3. Add a `Dockerfile`
 
 ---
 
@@ -98,6 +80,13 @@ For HuggingFace:
 **EN:** For educational purposes only. Not a substitute for professional medical advice. Always consult a dermatologist.
 
 **FR:** À titre éducatif uniquement. Ne remplace pas un avis médical professionnel. Consultez toujours un dermatologue.
+
+---
+
+## Contributors / Contributeurs
+
+Nerdjes Benhamed
+Mohamed Said Aimen LAMRI
 
 ---
 
