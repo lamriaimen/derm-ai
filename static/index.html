@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derm Nerdjes — Skin Lesion Analysis / Analyse des lésions cutanées</title>
+    <meta name="description" content="Skin lesion analysis tool. Upload a photo for instant condition suggestions. / Outil d'analyse de lésions cutanées.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Language Toggle -->
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+        <span class="lang-flag">🇫🇷</span> FR
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-title">Derm Nerdjes AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="#analyzer" data-en="Analyzer" data-fr="Analyseur">Analyzer</a>
+            <a href="#guide" data-en="Guide" data-fr="Guide">Guide</a>
+            <a href="#about" data-en="About" data-fr="À propos">About</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="hero-badge" data-en="Dermatology Analysis" data-fr="Analyse Dermatologique">Dermatology Analysis</div>
+            <h1>Derm <span class="gradient-text">Nerdjes</span></h1>
+            <p class="hero-subtitle" data-en="Upload a photo of a skin lesion and get an instant analysis with confidence scores." data-fr="Téléchargez une photo d'une lésion cutanée et obtenez une analyse instantanée avec scores de confiance.">Upload a photo of a skin lesion and get an instant analysis with confidence scores.</p>
+            <a href="#analyzer" class="hero-cta">
+                <span data-en="Start Analysis" data-fr="Commencer l'analyse">Start Analysis</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Analyzer -->
+    <section id="analyzer" class="section">
+        <div class="container">
+            <h2 class="section-title" data-en="Skin Lesion Analyzer" data-fr="Analyseur de Lésions Cutanées">Skin Lesion Analyzer</h2>
+            <p class="section-desc" data-en="Drag & drop or click to upload a photo of the skin lesion you want to analyze." data-fr="Glissez-déposez ou cliquez pour télécharger une photo de la lésion cutanée à analyser.">Drag & drop or click to upload a photo of the skin lesion you want to analyze.</p>
+
+            <div class="analyzer-grid">
+                <!-- Upload Card -->
+                <div class="card upload-card" id="uploadCard">
+                    <div class="upload-zone" id="uploadZone">
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <div class="upload-icon" id="uploadIcon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <p class="upload-text" data-en="Drag & drop an image here" data-fr="Glissez-déposez une image ici">Drag & drop an image here</p>
+                            <span class="upload-hint" data-en="or click to browse • JPG, PNG" data-fr="ou cliquez pour parcourir • JPG, PNG">or click to browse • JPG, PNG</span>
+                        </div>
+                        <img id="imagePreview" class="image-preview hidden" alt="Preview">
+                    </div>
+                    <button class="btn-analyze hidden" id="btnAnalyze" onclick="analyzeImage()">
+                        <span data-en="Analyze Lesion" data-fr="Analyser la lésion">Analyze Lesion</span>
+                    </button>
+                    <button class="btn-reset hidden" id="btnReset" onclick="resetUpload()">
+                        <span data-en="↻ Upload another image" data-fr="↻ Charger une autre image">↻ Upload another image</span>
+                    </button>
+                </div>
+
+                <!-- Results Card -->
+                <div class="card results-card hidden" id="resultsCard">
+                    <div class="results-header">
+                        <h3 data-en="Analysis Results" data-fr="Résultats de l'analyse">Analysis Results</h3>
+                    </div>
+
+                    <!-- Loading -->
+                    <div class="loading hidden" id="loading">
+                        <div class="dna-loader">
+                            <div class="dna-dot"></div>
+                            <div class="dna-dot"></div>
+                            <div class="dna-dot"></div>
+                        </div>
+                        <p data-en="Analyzing lesion..." data-fr="Analyse en cours...">Analyzing lesion...</p>
+                    </div>
+
+                    <!-- Top Prediction -->
+                    <div class="top-prediction hidden" id="topPrediction">
+                        <div class="prediction-badge">
+                            <span class="prediction-label" id="predictionLabel"></span>
+                            <span class="prediction-confidence" id="predictionConfidence"></span>
+                        </div>
+                    </div>
+
+                    <!-- All Results -->
+                    <div class="all-results hidden" id="allResults">
+                        <h4 data-en="All conditions analyzed:" data-fr="Toutes les conditions analysées :">All conditions analyzed:</h4>
+                        <div id="resultBars"></div>
+                    </div>
+
+                    <!-- Error -->
+                    <div class="error-msg hidden" id="errorMsg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide -->
+    <section id="guide" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title" data-en="How to Use" data-fr="Comment utiliser">How to Use</h2>
+
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 data-en="Take a photo" data-fr="Prenez une photo">Take a photo</h3>
+                        <p data-en="Take a clear, well-lit photo of the skin lesion. Make sure the lesion is centered and in focus. Avoid blurry or dark images." data-fr="Prenez une photo claire et bien éclairée de la lésion cutanée. Assurez-vous que la lésion est centrée et nette. Évitez les images floues ou sombres.">Take a clear, well-lit photo of the skin lesion. Make sure the lesion is centered and in focus.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 data-en="Upload the image" data-fr="Téléchargez l'image">Upload the image</h3>
+                        <p data-en="Drag and drop your image into the upload zone, or click to browse your files. Accepted formats: JPG, PNG." data-fr="Glissez-déposez votre image dans la zone de téléchargement, ou cliquez pour parcourir vos fichiers. Formats acceptés : JPG, PNG.">Drag and drop your image into the upload zone, or click to browse your files.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 data-en="Click Analyze" data-fr="Cliquez sur Analyser">Click Analyze</h3>
+                        <p data-en="After uploading, click the 'Analyze Lesion' button. The model will process your image and display results within seconds." data-fr="Après le téléchargement, cliquez sur 'Analyser la lésion'. Le modèle traitera votre image et affichera les résultats en quelques secondes.">After uploading, click the 'Analyze Lesion' button. Results appear within seconds.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 data-en="Read the results" data-fr="Lisez les résultats">Read the results</h3>
+                        <p data-en="The most likely condition is shown at the top with a confidence percentage, followed by scores for all other conditions." data-fr="La condition la plus probable est affichée en haut avec un pourcentage de confiance, suivi des scores pour toutes les autres conditions.">The most likely condition is shown with a confidence percentage, plus scores for all conditions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conditions -->
+            <div class="conditions-box">
+                <h3 data-en="Conditions covered" data-fr="Conditions couvertes">Conditions covered</h3>
+                <div class="conditions-grid">
+                    <div class="condition-tag">
+                        <span class="tag-dot" style="background:#FF6B6B"></span>
+                        <span data-en="Atopic Dermatitis" data-fr="Dermatite Atopique">Atopic Dermatitis</span>
+                    </div>
+                    <div class="condition-tag">
+                        <span class="tag-dot" style="background:#4ECDC4"></span>
+                        <span data-en="Eczema" data-fr="Eczéma">Eczema</span>
+                    </div>
+                    <div class="condition-tag">
+                        <span class="tag-dot" style="background:#45B7D1"></span>
+                        <span data-en="Psoriasis & Lichen Planus" data-fr="Psoriasis & Lichen Plan">Psoriasis & Lichen Planus</span>
+                    </div>
+                    <div class="condition-tag">
+                        <span class="tag-dot" style="background:#96CEB4"></span>
+                        <span data-en="Seborrheic Keratoses & Benign Tumors" data-fr="Kératoses Séborrhéiques & Tumeurs Bénignes">Seborrheic Keratoses & Benign Tumors</span>
+                    </div>
+                    <div class="condition-tag">
+                        <span class="tag-dot" style="background:#FFEAA7"></span>
+                        <span data-en="Fungal Infections (Ringworm, Candidiasis)" data-fr="Infections Fongiques (Teigne, Candidose)">Fungal Infections (Ringworm, Candidiasis)</span>
+                    </div>
+                    <div class="condition-tag">
+                        <span class="tag-dot" style="background:#DDA0DD"></span>
+                        <span data-en="Viral Infections (Warts, Molluscum)" data-fr="Infections Virales (Verrues, Molluscum)">Viral Infections (Warts, Molluscum)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="tips-box">
+                <h3 data-en="Tips for better results" data-fr="Conseils pour de meilleurs résultats">Tips for better results</h3>
+                <ul>
+                    <li data-en="Use natural daylight — avoid flash or fluorescent lighting" data-fr="Utilisez la lumière naturelle — évitez le flash ou l'éclairage fluorescent">Use natural daylight — avoid flash or fluorescent lighting</li>
+                    <li data-en="Keep the camera steady and close to the lesion (10-15 cm)" data-fr="Gardez l'appareil stable et proche de la lésion (10-15 cm)">Keep the camera steady and close to the lesion (10-15 cm)</li>
+                    <li data-en="Make sure the lesion is centered in the image" data-fr="Assurez-vous que la lésion est centrée dans l'image">Make sure the lesion is centered in the image</li>
+                    <li data-en="Avoid images with hair, clothing or shadows covering the lesion" data-fr="Évitez les images avec des cheveux, vêtements ou ombres couvrant la lésion">Avoid images with hair, clothing or shadows covering the lesion</li>
+                    <li data-en="Works best with close-up photos of a single lesion" data-fr="Fonctionne mieux avec des photos en gros plan d'une seule lésion">Works best with close-up photos of a single lesion</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title" data-en="About" data-fr="À propos">About</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">⚕️</div>
+                    <h3 data-en="Model" data-fr="Modèle">Model</h3>
+                    <p data-en="SigLIP architecture fine-tuned on dermatology images from Kaggle. Analyzes skin lesion images and classifies them into 6 common conditions." data-fr="Architecture SigLIP fine-tunée sur des images dermatologiques de Kaggle. Analyse les images de lésions cutanées et les classe en 6 conditions courantes.">SigLIP fine-tuned on dermatology images. Classifies 6 common skin conditions.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🔒</div>
+                    <h3 data-en="Privacy" data-fr="Confidentialité">Privacy</h3>
+                    <p data-en="Your images are processed in memory and are NOT stored. No data is saved, shared, or transmitted anywhere." data-fr="Vos images sont traitées en mémoire et ne sont PAS stockées. Aucune donnée n'est sauvegardée, partagée ou transmise.">Images are processed in memory and NOT stored anywhere.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">⚙️</div>
+                    <h3 data-en="Stack" data-fr="Technologies">Stack</h3>
+                    <p data-en="Python (Flask), PyTorch, HuggingFace Transformers, vanilla HTML/CSS/JS." data-fr="Python (Flask), PyTorch, HuggingFace Transformers, HTML/CSS/JS vanilla.">Python (Flask), PyTorch, HuggingFace Transformers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <div class="container">
+            <div class="disclaimer-content">
+                <span class="disclaimer-icon">⚠️</span>
+                <p>
+                    <strong data-en="Medical Disclaimer:" data-fr="Avertissement médical :">Medical Disclaimer:</strong>
+                    <span data-en="This tool is for educational and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified dermatologist." data-fr="Cet outil est à des fins éducatives et informatives uniquement. Il ne remplace pas un avis médical professionnel, un diagnostic ou un traitement. Consultez toujours un dermatologue qualifié.">This tool is for educational purposes only. Not a substitute for professional medical advice. Consult a dermatologist.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-brand">Derm Nerdjes</p>
+            <p class="footer-text" data-en="Made for dermatology research" data-fr="Fait pour la recherche en dermatologie">Made for dermatology research</p>
+            <p class="footer-copy">© 2026 Derm Nerdjes — MIT License</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
