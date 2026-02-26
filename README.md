@@ -85,7 +85,7 @@ derm-ai/
 
 ## Contributors / Contributeurs
 
-* Nerdjes Benhamed
+* Nerdjes Kaoutar BENHAMED
 * Mohamed Said Aimen LAMRI
 
 ---
