@@ -1,4 +1,4 @@
-# Derm Nerdjes AI
+# Derm AI
 
 Skin lesion analysis app — upload a photo, get a condition match with confidence scores.
 Application d'analyse de lésions cutanées — téléversez une photo, obtenez une correspondance avec score de confiance.
