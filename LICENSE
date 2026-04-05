@@ -1,21 +1,87 @@
-MIT License
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+(CC BY-NC-ND 4.0)
 
-Copyright (c) 2026 MOHAMED SAID AIMEN LAMRI
+Copyright (c) 2026 Nerdjes Kaoutar BENHAMED & Mohamed Said Aimen LAMRI
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+You are free to:
+  Share — copy and redistribute this material in any medium or format
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Under the following terms:
+  Attribution    — You must give appropriate credit, provide a link to the
+                   license, and indicate if changes were made.
+  NonCommercial  — You may not use the material for commercial purposes.
+  NoDerivatives  — If you remix, transform, or build upon the material, you
+                   may not distribute the modified material.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Full license text: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+THIRD-PARTY NOTICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This application uses pre-trained model weights and source code from the
+following third-party projects. Their respective licenses apply to their
+respective components.
+
+──────────────────────────────────────────────────────────────────────────────
+1. DermLIP Model Weights & Derm1M Dataset
+   License : CC BY-NC-ND 4.0
+             https://creativecommons.org/licenses/by-nc-nd/4.0/
+   Source  : https://huggingface.co/redlessone/DermLIP_PanDerm-base-w-PubMed-256
+   Paper   : Yan, S. et al. (2025). "Derm1M: A Million-Scale Vision-Language
+             Dataset Aligned with Clinical Ontology Knowledge for Dermatology."
+             arXiv:2503.14911. https://arxiv.org/abs/2503.14911
+
+──────────────────────────────────────────────────────────────────────────────
+2. PanDerm Vision Encoder
+   License : See https://github.com/SiyuanYan1/PanDerm
+   Paper   : Yan, S. et al. (2025). "A multimodal vision foundation model for
+             clinical dermatology." Nature Medicine, pp. 1–12.
+
+──────────────────────────────────────────────────────────────────────────────
+3. OpenCLIP (Derm1M custom fork)
+   License : MIT License
+             https://github.com/mlfoundations/open_clip/blob/main/LICENSE
+   Source  : https://github.com/SiyuanYan1/Derm1M (src/open_clip/)
+
+──────────────────────────────────────────────────────────────────────────────
+4. PubMedBERT Text Encoder
+   Source  : https://huggingface.co/NeuML/pubmedbert-base-embeddings
+   License : MIT License
+
+──────────────────────────────────────────────────────────────────────────────
+CITATION
+
+If you use this application in academic work, please cite:
+
+  @misc{yan2025derm1m,
+    title        = {Derm1M: A Million-Scale Vision-Language Dataset Aligned
+                    with Clinical Ontology Knowledge for Dermatology},
+    author       = {Siyuan Yan and Ming Hu and Yiwen Jiang and Xieji Li and
+                    Hao Fei and Philipp Tschandl and Harald Kittler and
+                    Zongyuan Ge},
+    year         = {2025},
+    eprint       = {2503.14911},
+    archivePrefix= {arXiv},
+    primaryClass = {cs.CV},
+    url          = {https://arxiv.org/abs/2503.14911}
+  }
+
+  @article{yan2025multimodal,
+    title     = {A multimodal vision foundation model for clinical dermatology},
+    author    = {Yan, Siyuan and Yu, Zhen and Primiero, Clare and
+                 Vico-Alonso, Cristina and Wang, Zhonghua and Yang, Litao and
+                 Tschandl, Philipp and Hu, Ming and Ju, Lie and Tan, Gin and
+                 others},
+    journal   = {Nature Medicine},
+    pages     = {1--12},
+    year      = {2025},
+    publisher = {Nature Publishing Group}
+  }
+
+──────────────────────────────────────────────────────────────────────────────
+MEDICAL DISCLAIMER
+
+This software is for educational and research purposes only.
+It is NOT a certified medical device and must NOT be used for clinical
+diagnosis or treatment decisions. Always consult a qualified dermatologist.

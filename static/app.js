@@ -123,7 +123,7 @@ async function analyzeImage() {
 
     try {
         const formData = new FormData();
-        formData.append("image", selectedFile);
+        formData.append("file", selectedFile);
 
         const response = await fetch("/predict", {
             method: "POST",
@@ -151,45 +151,50 @@ async function analyzeImage() {
 
 // Display results
 function displayResults(data) {
-    const { prediction, all_results } = data;
+    const { prediction, differential } = data;
 
-    // Top prediction
-    const label =
-        currentLang === "fr" ? prediction.label_fr : prediction.label_en;
+    // ── Primary Match ──────────────────────────────────────────────────────
+    const label = currentLang === "fr" ? prediction.label_fr : prediction.label_en;
     predictionLabel.textContent = label;
     predictionConfidence.textContent = `${prediction.confidence}%`;
     topPrediction.classList.remove("hidden");
 
-    // All result bars
+    // ── Differential Diagnosis (#2 – #10) ─────────────────────────────────
     resultBars.innerHTML = "";
-    all_results.forEach((result) => {
-        const barLabel =
-            currentLang === "fr" ? result.label_fr : result.label_en;
-        const isHigh = result.confidence > 5;
 
-        const barHTML = `
-            <div class="result-bar">
-                <div class="bar-header">
-                    <span class="bar-label">${barLabel}</span>
-                    <span class="bar-value">${result.confidence}%</span>
+    if (differential && differential.length > 0) {
+        differential.forEach((result, idx) => {
+            const barLabel = currentLang === "fr" ? result.label_fr : result.label_en;
+            const isHigh = result.confidence > 5;
+            const rank = idx + 2; // starts at #2
+
+            const barHTML = `
+                <div class="result-bar">
+                    <div class="bar-header">
+                        <span class="bar-label">
+                            <span class="bar-rank">#${rank}</span>
+                            ${barLabel}
+                        </span>
+                        <span class="bar-value">${result.confidence}%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill ${isHigh ? "high" : "low"}" style="width: 0%"></div>
+                    </div>
                 </div>
-                <div class="bar-track">
-                    <div class="bar-fill ${isHigh ? "high" : "low"}" style="width: 0%"></div>
-                </div>
-            </div>
-        `;
-        resultBars.insertAdjacentHTML("beforeend", barHTML);
-    });
+            `;
+            resultBars.insertAdjacentHTML("beforeend", barHTML);
+        });
+    }
 
     allResults.classList.remove("hidden");
 
-    // Animate bars after a brief delay
+    // Animate bars
     requestAnimationFrame(() => {
         setTimeout(() => {
             const fills = resultBars.querySelectorAll(".bar-fill");
             fills.forEach((fill, i) => {
-                const width = all_results[i].confidence;
-                fill.style.width = `${Math.max(width, 0.5)}%`;
+                const width = differential[i].confidence;
+                fill.style.width = `${Math.max(width, 0.3)}%`;
             });
         }, 100);
     });

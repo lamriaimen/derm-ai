@@ -98,7 +98,7 @@
 
                     <!-- All Results -->
                     <div class="all-results hidden" id="allResults">
-                        <h4 data-en="All conditions analyzed:" data-fr="Toutes les conditions analysées :">All conditions analyzed:</h4>
+                        <h4 data-en="Differential Diagnosis (other possible matches):" data-fr="Diagnostic Différentiel (autres correspondances) :">Differential Diagnosis (other possible matches):</h4>
                         <div id="resultBars"></div>
                     </div>
 
@@ -147,36 +147,72 @@
 
             <!-- Conditions -->
             <div class="conditions-box">
-                <h3 data-en="Conditions covered" data-fr="Conditions couvertes">Conditions covered</h3>
-                <div class="conditions-grid">
-                    <div class="condition-tag">
-                        <span class="tag-dot" style="background:#FF6B6B"></span>
-                        <span data-en="Atopic Dermatitis" data-fr="Dermatite Atopique">Atopic Dermatitis</span>
-                    </div>
-                    <div class="condition-tag">
-                        <span class="tag-dot" style="background:#4ECDC4"></span>
-                        <span data-en="Eczema" data-fr="Eczéma">Eczema</span>
-                    </div>
-                    <div class="condition-tag">
-                        <span class="tag-dot" style="background:#45B7D1"></span>
-                        <span data-en="Psoriasis & Lichen Planus" data-fr="Psoriasis & Lichen Plan">Psoriasis & Lichen Planus</span>
-                    </div>
-                    <div class="condition-tag">
-                        <span class="tag-dot" style="background:#96CEB4"></span>
-                        <span data-en="Seborrheic Keratoses & Benign Tumors" data-fr="Kératoses Séborrhéiques & Tumeurs Bénignes">Seborrheic Keratoses & Benign Tumors</span>
-                    </div>
-                    <div class="condition-tag">
-                        <span class="tag-dot" style="background:#FFEAA7"></span>
-                        <span data-en="Fungal Infections (Ringworm, Candidiasis)" data-fr="Infections Fongiques (Teigne, Candidose)">Fungal Infections (Ringworm, Candidiasis)</span>
-                    </div>
-                    <div class="condition-tag">
-                        <span class="tag-dot" style="background:#DDA0DD"></span>
-                        <span data-en="Viral Infections (Warts, Molluscum)" data-fr="Infections Virales (Verrues, Molluscum)">Viral Infections (Warts, Molluscum)</span>
+                <h3 data-en="26 Conditions covered" data-fr="26 Conditions couvertes">26 Conditions covered</h3>
+
+                <div class="conditions-category">
+                    <span class="category-label" data-en="Neoplastic / Pigmented" data-fr="Néoplasique / Pigmenté">Neoplastic / Pigmented</span>
+                    <div class="conditions-grid">
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Melanoma" data-fr="Mélanome">Melanoma</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Nevus (Mole)" data-fr="Nævus (Grain de beauté)">Nevus (Mole)</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Basal Cell Carcinoma" data-fr="Carcinome Basocellulaire">Basal Cell Carcinoma</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Squamous Cell Carcinoma" data-fr="Carcinome Épidermoïde">Squamous Cell Carcinoma</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Actinic Keratosis" data-fr="Kératose Actinique">Actinic Keratosis</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Seborrheic Keratosis" data-fr="Kératose Séborrhéique">Seborrheic Keratosis</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Benign Keratosis" data-fr="Kératose Bénigne">Benign Keratosis</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Dermatofibroma" data-fr="Dermatofibrome">Dermatofibroma</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FF6B6B"></span><span data-en="Vascular Lesion" data-fr="Lésion Vasculaire">Vascular Lesion</span></div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Tips -->
+                <div class="conditions-category">
+                    <span class="category-label" data-en="Inflammatory" data-fr="Inflammatoire">Inflammatory</span>
+                    <div class="conditions-grid">
+                        <div class="condition-tag"><span class="tag-dot" style="background:#4ECDC4"></span><span data-en="Eczema" data-fr="Eczéma">Eczema</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#4ECDC4"></span><span data-en="Seborrheic Dermatitis" data-fr="Dermatite Séborrhéique">Seborrheic Dermatitis</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#4ECDC4"></span><span data-en="Contact Dermatitis" data-fr="Dermatite de Contact">Contact Dermatitis</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#4ECDC4"></span><span data-en="Drug Eruption" data-fr="Éruption Médicamenteuse">Drug Eruption</span></div>
+                    </div>
+                </div>
+
+                <div class="conditions-category">
+                    <span class="category-label" data-en="Papulosquamous" data-fr="Papulosquameux">Papulosquamous</span>
+                    <div class="conditions-grid">
+                        <div class="condition-tag"><span class="tag-dot" style="background:#45B7D1"></span><span data-en="Psoriasis" data-fr="Psoriasis">Psoriasis</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#45B7D1"></span><span data-en="Lichen Planus" data-fr="Lichen Plan">Lichen Planus</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#45B7D1"></span><span data-en="Pityriasis Rosea" data-fr="Pityriasis Rosé">Pityriasis Rosea</span></div>
+                    </div>
+                </div>
+
+                <div class="conditions-category">
+                    <span class="category-label" data-en="Acneiform" data-fr="Acnéiforme">Acneiform</span>
+                    <div class="conditions-grid">
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FFEAA7"></span><span data-en="Acne" data-fr="Acné">Acne</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FFEAA7"></span><span data-en="Rosacea" data-fr="Rosacée">Rosacea</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#FFEAA7"></span><span data-en="Folliculitis" data-fr="Folliculite">Folliculitis</span></div>
+                    </div>
+                </div>
+
+                <div class="conditions-category">
+                    <span class="category-label" data-en="Pigmentation &amp; Autoimmune" data-fr="Pigmentation &amp; Auto-immune">Pigmentation &amp; Autoimmune</span>
+                    <div class="conditions-grid">
+                        <div class="condition-tag"><span class="tag-dot" style="background:#DDA0DD"></span><span data-en="Vitiligo" data-fr="Vitiligo">Vitiligo</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#DDA0DD"></span><span data-en="Lupus Erythematosus" data-fr="Lupus Érythémateux">Lupus Erythematosus</span></div>
+                    </div>
+                </div>
+
+                <div class="conditions-category">
+                    <span class="category-label" data-en="Infections" data-fr="Infections">Infections</span>
+                    <div class="conditions-grid">
+                        <div class="condition-tag"><span class="tag-dot" style="background:#96CEB4"></span><span data-en="Tinea / Ringworm" data-fr="Teigne">Tinea / Ringworm</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#96CEB4"></span><span data-en="Urticaria (Hives)" data-fr="Urticaire">Urticaria (Hives)</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#96CEB4"></span><span data-en="Scabies" data-fr="Gale">Scabies</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#96CEB4"></span><span data-en="Warts" data-fr="Verrues">Warts</span></div>
+                        <div class="condition-tag"><span class="tag-dot" style="background:#96CEB4"></span><span data-en="Molluscum Contagiosum" data-fr="Molluscum Contagiosum">Molluscum Contagiosum</span></div>
+                    </div>
+                </div>
+
+            </div>
+                        <!-- Tips -->
             <div class="tips-box">
                 <h3 data-en="Tips for better results" data-fr="Conseils pour de meilleurs résultats">Tips for better results</h3>
                 <ul>
@@ -196,25 +232,69 @@
             <h2 class="section-title" data-en="About" data-fr="À propos">About</h2>
             <div class="about-grid">
                 <div class="about-card">
-                    <div class="about-icon">⚕️</div>
-                    <h3 data-en="Model" data-fr="Modèle">Model</h3>
-                    <p data-en="SigLIP architecture fine-tuned on dermatology images from Kaggle. Analyzes skin lesion images and classifies them into 6 common conditions." data-fr="Architecture SigLIP fine-tunée sur des images dermatologiques de Kaggle. Analyse les images de lésions cutanées et les classe en 6 conditions courantes.">SigLIP fine-tuned on dermatology images. Classifies 6 common skin conditions.</p>
+                    <div class="about-icon">🧠</div>
+                    <h3 data-en="Model — DermLIP" data-fr="Modèle — DermLIP">Model — DermLIP</h3>
+                    <p data-en="DermLIP is a CLIP-style vision-language model trained on Derm1M (403K dermatology image-text pairs). It uses a PanDerm-base vision encoder (BEiT architecture, Nature Medicine 2025) paired with a PubMedBERT-256 text encoder. Zero-shot: no fine-tuning needed for new conditions." data-fr="DermLIP est un modèle vision-langage entraîné sur Derm1M (403K paires image-texte). Il utilise un encodeur visuel PanDerm-base (architecture BEiT, Nature Medicine 2025) couplé à un encodeur texte PubMedBERT-256. Zéro-shot : aucun ré-entraînement nécessaire.">DermLIP (PanDerm-base + PubMedBERT-256) trained on 403K dermatology image-text pairs. Zero-shot classification — no fine-tuning required.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">⚡</div>
+                    <h3 data-en="How inference works" data-fr="Comment fonctionne l'inférence">How inference works</h3>
+                    <p data-en="Your image is encoded by PanDerm. Its embedding is compared against 26 pre-computed text embeddings (using 8-prompt ensembling per condition). The top 10 closest matches are returned as a differential diagnosis." data-fr="Votre image est encodée par PanDerm. Son embedding est comparé à 26 embeddings texte pré-calculés (8 modèles de prompt par condition). Les 10 correspondances les plus proches sont renvoyées en diagnostic différentiel.">Image → PanDerm encoder → cosine similarity against 26 text embeddings (8-prompt ensembling) → Top 10 ranked results.</p>
                 </div>
                 <div class="about-card">
                     <div class="about-icon">🔒</div>
                     <h3 data-en="Privacy" data-fr="Confidentialité">Privacy</h3>
-                    <p data-en="Your images are processed in memory and are NOT stored. No data is saved, shared, or transmitted anywhere." data-fr="Vos images sont traitées en mémoire et ne sont PAS stockées. Aucune donnée n'est sauvegardée, partagée ou transmise.">Images are processed in memory and NOT stored anywhere.</p>
-                </div>
-                <div class="about-card">
-                    <div class="about-icon">⚙️</div>
-                    <h3 data-en="Stack" data-fr="Technologies">Stack</h3>
-                    <p data-en="Python (Flask), PyTorch, HuggingFace Transformers, vanilla HTML/CSS/JS." data-fr="Python (Flask), PyTorch, HuggingFace Transformers, HTML/CSS/JS vanilla.">Python (Flask), PyTorch, HuggingFace Transformers.</p>
+                    <p data-en="Your images are processed in memory and are NOT stored, saved, shared, or transmitted anywhere. Each request is fully stateless." data-fr="Vos images sont traitées en mémoire et ne sont PAS stockées, partagées ou transmises. Chaque requête est entièrement sans état.">Images are processed in memory only — never stored or transmitted.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Citations -->
+    <section id="citations" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title" data-en="Citations &amp; Attribution" data-fr="Citations &amp; Attribution">Citations &amp; Attribution</h2>
+            <p class="section-desc" data-en="This tool is powered by DermLIP and PanDerm. Please cite the original papers if you use this in academic work." data-fr="Cet outil est propulsé par DermLIP et PanDerm. Veuillez citer les articles originaux si vous l'utilisez dans un travail académique.">Powered by DermLIP &amp; PanDerm. Please cite the original papers in academic work.</p>
+
+            <div class="citations-grid">
+                <div class="citation-card">
+                    <div class="citation-tag">arXiv 2503.14911</div>
+                    <h3>Derm1M &amp; DermLIP Model</h3>
+                    <p class="citation-authors">Siyuan Yan, Ming Hu, Yiwen Jiang, Xieji Li, Hao Fei, Philipp Tschandl, Harald Kittler, Zongyuan Ge</p>
+                    <p class="citation-venue">arXiv, 2025</p>
+                    <pre class="citation-bib">@misc{yan2025derm1m,
+  title        = {Derm1M: A Million-Scale Vision-Language Dataset for Dermatology},
+  author       = {Siyuan Yan et al.},
+  year         = {2025},
+  eprint       = {2503.14911},
+  archivePrefix= {arXiv}
+}</pre>
+                    <a class="citation-link" href="https://arxiv.org/abs/2503.14911" target="_blank" rel="noopener">arxiv.org/abs/2503.14911 ↗</a>
+                </div>
+                <div class="citation-card">
+                    <div class="citation-tag">Nature Medicine 2025</div>
+                    <h3>PanDerm — Vision Foundation Model</h3>
+                    <p class="citation-authors">Siyuan Yan, Zhen Yu, Clare Primiero, Cristina Vico-Alonso, Zhonghua Wang, Litao Yang, Philipp Tschandl, Ming Hu et al.</p>
+                    <p class="citation-venue">Nature Medicine, 2025</p>
+                    <pre class="citation-bib">@article{yan2025multimodal,
+  title   = {A multimodal vision foundation model for clinical dermatology},
+  author  = {Yan, Siyuan et al.},
+  journal = {Nature Medicine},
+  year    = {2025}
+}</pre>
+                    <a class="citation-link" href="https://github.com/SiyuanYan1/PanDerm" target="_blank" rel="noopener">github.com/SiyuanYan1/PanDerm ↗</a>
+                </div>
+            </div>
+
+            <div class="license-notice">
+                <span class="license-badge">CC BY-NC-ND 4.0</span>
+                <p data-en="This project is licensed under CC BY-NC-ND 4.0 — non-commercial research use only. Commercial use requires written permission from the authors." data-fr="Ce projet est sous licence CC BY-NC-ND 4.0 — usage de recherche non commercial uniquement. Toute utilisation commerciale nécessite l'autorisation écrite des auteurs.">This project and the DermLIP model weights are both licensed under <strong>CC BY-NC-ND 4.0</strong>. Non-commercial research use only.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Disclaimer -->
+
     <div class="disclaimer">
         <div class="container">
             <div class="disclaimer-content">
@@ -230,9 +310,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer-brand">Derm</p>
-            <p class="footer-text" data-en="Made for dermatology research" data-fr="Fait pour la recherche en dermatologie">Made for dermatology research</p>
-            <p class="footer-copy">© 2026 Derm — MIT License</p>
+            <p class="footer-brand">Derm AI</p>
+            <p class="footer-powered">Powered by <a href="https://arxiv.org/abs/2503.14911" target="_blank" rel="noopener">DermLIP</a> · <a href="https://github.com/SiyuanYan1/PanDerm" target="_blank" rel="noopener">PanDerm</a> · <a href="https://github.com/mlfoundations/open_clip" target="_blank" rel="noopener">OpenCLIP</a></p>
+            <p class="footer-text" data-en="Made for dermatology research — non-commercial use only" data-fr="Fait pour la recherche en dermatologie — usage non commercial uniquement">Made for dermatology research — non-commercial use only</p>
+            <p class="footer-copy">© 2026 Nerdjes Kaoutar BENHAMED &amp; Mohamed Said Aimen LAMRI — CC BY-NC-ND 4.0</p>
         </div>
     </footer>
 

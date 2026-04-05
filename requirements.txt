@@ -1,5 +1,5 @@
 flask>=3.0
 flask-cors>=4.0
-transformers>=4.40
+open_clip_torch @ git+https://github.com/mlfoundations/open_clip.git
 torch>=2.0
 Pillow>=10.0
