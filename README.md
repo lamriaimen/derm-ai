@@ -100,8 +100,8 @@ source venv/bin/activate
 # 3. Clone Derm1M (custom open_clip fork with PanDerm support)
 git clone https://github.com/SiyuanYan1/Derm1M.git
 
-# 4. Install PyTorch first (IMPORTANT — must be installed before transformers)
-pip install torch torchvision
+# 4. Install PyTorch >= 2.4 and NumPy < 2 (IMPORTANT — exact versions matter)
+pip install "torch>=2.4" torchvision "numpy<2"
 
 # 5. Install remaining dependencies
 pip install -r requirements.txt
@@ -124,8 +124,8 @@ python -m venv venv
 # 3. Clone Derm1M
 git clone https://github.com/SiyuanYan1/Derm1M.git
 
-# 4. Install PyTorch first
-pip install torch torchvision
+# 4. Install PyTorch >= 2.4 and NumPy < 2 (IMPORTANT — exact versions matter)
+pip install "torch>=2.4" torchvision "numpy<2"
 
 # 5. Install remaining dependencies
 pip install -r requirements.txt
@@ -137,7 +137,10 @@ python app.py
 Open **http://localhost:5000**.  
 Model weights are cached after the first download.
 
-> **Troubleshooting:** If you get `ImportError: AutoModel requires the PyTorch library`, make sure you ran `pip install torch torchvision` **before** `pip install -r requirements.txt`. PyTorch must be present before `transformers` initializes.
+> **Troubleshooting — `AutoModel requires the PyTorch library`:** This means the installed `transformers` requires PyTorch ≥ 2.4 but found an older version (e.g., 2.2.x), OR NumPy 2.x is installed which crashes PyTorch < 2.6. Fix with:
+> ```bash
+> pip install "torch>=2.4" torchvision "numpy<2" --upgrade
+> ```
 
 ---
 
