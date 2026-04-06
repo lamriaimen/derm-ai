@@ -86,28 +86,58 @@ Text  ──► PubMedBERT-256 (text encoder) ──────► text embeddi
 
 **Requirements:** Python 3.9+, Git
 
+### macOS / Linux
+
 ```bash
 # 1. Clone this repo
 git clone git@github.com:lamriaimen/derm-ai.git
 cd derm-ai
 
-# 2. Create a virtual environment
-python -m venv venv
-.\venv\Scripts\activate       # Windows
-# source venv/bin/activate    # macOS / Linux
+# 2. Create & activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate
 
-# 3. Clone Derm1M (provides the custom open_clip with PanDerm support)
+# 3. Clone Derm1M (custom open_clip fork with PanDerm support)
 git clone https://github.com/SiyuanYan1/Derm1M.git
 
-# 4. Install dependencies
-pip install flask flask-cors torch Pillow timm safetensors ftfy regex braceexpand transformers
+# 4. Install PyTorch first (IMPORTANT — must be installed before transformers)
+pip install torch torchvision
 
-# 5. Run  (downloads ~784 MB model weights on first launch)
+# 5. Install remaining dependencies
+pip install -r requirements.txt
+
+# 6. Run  (downloads ~784 MB model weights on first launch)
+python3 app.py
+```
+
+### Windows
+
+```bash
+# 1. Clone this repo
+git clone git@github.com:lamriaimen/derm-ai.git
+cd derm-ai
+
+# 2. Create & activate a virtual environment
+python -m venv venv
+.\venv\Scripts\activate
+
+# 3. Clone Derm1M
+git clone https://github.com/SiyuanYan1/Derm1M.git
+
+# 4. Install PyTorch first
+pip install torch torchvision
+
+# 5. Install remaining dependencies
+pip install -r requirements.txt
+
+# 6. Run
 python app.py
 ```
 
 Open **http://localhost:5000**.  
 Model weights are cached after the first download.
+
+> **Troubleshooting:** If you get `ImportError: AutoModel requires the PyTorch library`, make sure you ran `pip install torch torchvision` **before** `pip install -r requirements.txt`. PyTorch must be present before `transformers` initializes.
 
 ---
 
