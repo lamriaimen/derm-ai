@@ -42,6 +42,22 @@ app = Flask(__name__, static_folder="static")
 CORS(app)
 
 # ---------------------------------------------------------------------------
+# Compatibility patch — transformers v4.40+ lazy-loads AutoModel via a custom
+# _LazyModule.__getattribute__ that calls requires_backends() and raises
+# "AutoModel requires PyTorch" even when torch IS installed.
+# Derm1M's hf_model.py triggers this on line 122 when it accesses
+# AutoModel.from_config as a value (not a call).
+# We patch the concrete class (imported directly, bypassing lazy-load) back
+# onto the already-imported transformers module so Derm1M sees it.
+# ---------------------------------------------------------------------------
+try:
+    from transformers.models.auto.modeling_auto import AutoModel as _ConcreteAutoModel
+    import transformers as _tf
+    _tf.AutoModel = _ConcreteAutoModel
+except Exception:
+    pass  # transformers old enough that lazy-loading isn't an issue
+
+# ---------------------------------------------------------------------------
 # Model — DermLIP (PanDerm-base × PubMedBERT-256, trained on Derm1M)
 # ---------------------------------------------------------------------------
 MODEL_HUB = "hf-hub:redlessone/DermLIP_PanDerm-base-w-PubMed-256"
